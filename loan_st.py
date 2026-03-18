@@ -23,6 +23,18 @@ run_query('''CREATE TABLE IF NOT EXISTS settings (key TEXT, value TEXT)''')
 run_query("INSERT OR IGNORE INTO settings VALUES ('pin', '1234')")
 
 st.set_page_config(page_title="Loan Manager Pro", layout="wide", page_icon="💰")
+# --- Scroll Issue Fix ---
+st.markdown(
+    """
+    <style>
+    .main .block-container {
+        max-height: 100vh;
+        overflow-y: auto;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 # --- PIN Login ---
 if 'logged_in' not in st.session_state:
